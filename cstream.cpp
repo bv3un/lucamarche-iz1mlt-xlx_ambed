@@ -71,18 +71,20 @@ CStream::CStream(uint16 uiId, const CCallsign &Callsign, const CIp &Ip, uint8 ui
 
 CStream::~CStream()
 {
-    m_Socket.Close();
-    if ( m_VocodecChannel != NULL )
-    {
-        g_Vocodecs.CloseChannel(m_VocodecChannel);
-        m_VocodecChannel = NULL;
-    }
-    
+    // stop thread first
     m_bStopThread = true;
     if ( m_pThread != NULL )
     {
         m_pThread->join();
         delete m_pThread;
+        m_pThread = NULL;
+    }
+	
+	// then close everything
+    m_Socket.Close();
+    if ( m_VocodecChannel != NULL )
+    {
+        m_VocodecChannel->Close();
     }
 }
 
@@ -134,19 +136,20 @@ bool CStream::Init(uint16 uiPort)
 
 void CStream::Close(void)
 {
-    // close everything
-    m_Socket.Close();
-    if ( m_VocodecChannel != NULL )
-    {
-        m_VocodecChannel->Close();
-    }
-    
+    // stop thread first
     m_bStopThread = true;
     if ( m_pThread != NULL )
     {
         m_pThread->join();
         delete m_pThread;
         m_pThread = NULL;
+    }
+	
+	// then close everything
+    m_Socket.Close();
+    if ( m_VocodecChannel != NULL )
+    {
+        m_VocodecChannel->Close();
     }
     
     // report
