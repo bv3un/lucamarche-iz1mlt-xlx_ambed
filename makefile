@@ -14,7 +14,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(CFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) xlxd *.o *.d *.bak
+	$(RM) ambed *.o *.d *.bak
 
 install:
 	cp $(EXECUTABLE) /usr/local/bin/
