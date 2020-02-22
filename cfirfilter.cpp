@@ -65,3 +65,5 @@ inline float CFIRFilter::ProcessSample(float inputSample)
 
     return output;
 }
+
+
