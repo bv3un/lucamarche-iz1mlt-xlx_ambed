@@ -152,6 +152,7 @@ void CStream::Close(void)
         m_VocodecChannel->Close();
     }
     
+    
     // report
     std::cout << m_iLostPackets << " of " << m_iTotalPackets << " packets lost" << std::endl;
 }
