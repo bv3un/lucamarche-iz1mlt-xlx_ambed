@@ -36,7 +36,7 @@ device			 DMR->DSTAR		DSTAR->DMR		Nb Of concurrent channels
 3000(pair)		    1				1			2
 3003			    1				1			2
 3003(pair)		    3				3			4
-3003-3000(pair)	            2			        2		4
+3003-3000(pair)	    2			    2		4
 3006			    3				3			6
 3012			    6				6			12
 ```
@@ -66,7 +66,7 @@ Extract files
 # cd release/build
 # cp libftd2xx.* /usr/local/lib
 # chmod 0755 /usr/local/lib/libftd2xx.so.1.4.8
-# ln -sf /usr/local/lib/libftd2xx.so.1.4.8 /usr/local/lib/libftd2xx.s
+# ln -sf /usr/local/lib/libftd2xx.so.1.4.8 /usr/local/lib/libftd2xx.so
 ```
 2) installation of g++ compiler
 ```
